@@ -93,8 +93,9 @@
 .ckw .track{display:flex;align-items:center;gap:70px;width:max-content;animation:ckw-slide 44s linear infinite}
 .ckw .track.rev{animation-direction:reverse;animation-duration:54s}
 @keyframes ckw-slide{to{transform:translateX(-50%)}}
-.ckw .lg{display:grid;place-items:center;height:38px;opacity:.5;transition:opacity var(--ck-dur-hover) var(--ck-ease-out),transform var(--ck-dur-hover) var(--ck-ease-out)}
-.ckw .lg b{font-family:var(--font-display);font-weight:800;font-size:26px;letter-spacing:-.5px;color:var(--c);white-space:nowrap}
+.ckw .lg{display:flex;align-items:center;gap:12px;height:38px;opacity:.72;transition:opacity var(--ck-dur-hover) var(--ck-ease-out),transform var(--ck-dur-hover) var(--ck-ease-out)}
+.ckw .lg-mono{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 13px/1 var(--font-display);letter-spacing:0}
+.ckw .lg b{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:-.4px;color:var(--c);white-space:nowrap}
 .ckw .lg:hover{opacity:1;transform:translateY(-3px)}
 
 /* ---- placement film ---- */

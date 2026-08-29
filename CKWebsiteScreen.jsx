@@ -142,17 +142,25 @@ function Hero() {
 }
 
 /* ---------------------------------------------------------------- partners */
+function PartnerLogo({ p }) {
+  return (
+    <span className="lg" style={{ '--c': p.color }}>
+      <span className="lg-mono" style={{ background: p.color }}>{p.name[0]}</span>
+      <b style={p.tracked ? { letterSpacing: '2.5px' } : undefined}>{p.name}</b>
+    </span>
+  );
+}
+
 function Partners() {
   const row = D.partners.concat(D.partners);
   return (
     <section className="partners" data-screen-label="Hiring partners">
-      <div className="p-head"><h2>Where CodeKerdos learners land</h2><p>Hover a row to hold it.</p></div>
       <div className="rows">
         <div className="marq"><div className="track">
-          {row.map((p, i) => <span className="lg" key={i} style={{ '--c': p.color }}><b style={p.tracked ? { letterSpacing: '2.5px' } : undefined}>{p.name}</b></span>)}
+          {row.map((p, i) => <PartnerLogo p={p} key={i} />)}
         </div></div>
         <div className="marq"><div className="track rev">
-          {row.slice().reverse().map((p, i) => <span className="lg" key={i} style={{ '--c': p.color }}><b style={p.tracked ? { letterSpacing: '2.5px' } : undefined}>{p.name}</b></span>)}
+          {row.slice().reverse().map((p, i) => <PartnerLogo p={p} key={i} />)}
         </div></div>
       </div>
     </section>
