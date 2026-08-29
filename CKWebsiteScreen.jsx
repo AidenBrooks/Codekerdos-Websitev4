@@ -270,7 +270,7 @@ function WhyCard({ c, i }) {
       )}
     </React.Fragment>
   );
-  return <article ref={ref} className={cls} style={whyGridPositions[i]} onMouseMove={onMove}>{inner}</article>;
+  return <article ref={ref} className={cls} style={{ height: '100%' }} onMouseMove={onMove}>{inner}</article>;
 }
 
 function WhySection() {
@@ -280,7 +280,7 @@ function WhySection() {
       <div className="wrap">
         <Reveal><div className="sec-head"><span className="kick">Why CodeKerdos</span><h2>Why you <span className="grad">should choose us?</span></h2><p>Here are just a few reasons why students choose our courses.</p></div></Reveal>
         <div className="why-grid">
-          {D.whyCards.map((c, i) => <Reveal key={c.n} delay={i * 60}><WhyCard c={c} i={i} /></Reveal>)}
+          {D.whyCards.map((c, i) => <Reveal key={c.n} delay={i * 60} style={whyGridPositions[i]}><WhyCard c={c} i={i} /></Reveal>)}
         </div>
         <div className="perks"><div className="track">
           {perkRow.map((p, i) => <span className="perk" key={i}>{p}</span>)}
