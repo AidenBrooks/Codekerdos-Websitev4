@@ -60,6 +60,7 @@ function HofIcon({ k }) {
 function Nav() {
   const [scrolled, setScrolled] = React.useState(false);
   const [active, setActive] = React.useState('overview');
+  const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     addEventListener('scroll', onScroll, { passive: true });
@@ -71,6 +72,7 @@ function Nav() {
     return () => { removeEventListener('scroll', onScroll); spy.disconnect(); };
   }, []);
   const go = (e, l) => {
+    setOpen(false);
     if (l.id) {
       e.preventDefault();
       const el = document.getElementById(l.id);
@@ -85,7 +87,17 @@ function Nav() {
           <a key={l.label} className={active === l.id ? 'on' : ''} href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noreferrer' : undefined} onClick={e => go(e, l)}>{l.label}</a>
         ))}
       </div>
-      <div className="nav-act"><a className="btn-solid" href="https://codekerdos.in/login" target="_blank" rel="noreferrer">Login{Ico.arrow({ w: 15 })}</a></div>
+      <div className="nav-act">
+        <a className="btn-solid" href="https://codekerdos.in/login" target="_blank" rel="noreferrer">Login{Ico.arrow({ w: 15 })}</a>
+        <button className={'nav-toggle' + (open ? ' open' : '')} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} onClick={() => setOpen(o => !o)}>
+          <i /><i /><i />
+        </button>
+      </div>
+      <div className={'nav-mobile' + (open ? ' open' : '')}>
+        {D.nav.map(l => (
+          <a key={l.label} className={active === l.id ? 'on' : ''} href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noreferrer' : undefined} onClick={e => go(e, l)}>{l.label}</a>
+        ))}
+      </div>
     </nav>
   );
 }
